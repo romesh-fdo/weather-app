@@ -1,17 +1,11 @@
-# IDE files
+# Ignore actual config with API key
+config.js
+
+# Ignore IDE files
 .vscode/
 .idea/
-*.sublime-project
-*.sublime-workspace
+*.sublime-*
 
-# OS generated files
+# Ignore OS files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
-
-# Config with API keys
-config.js

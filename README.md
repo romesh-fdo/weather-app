@@ -1,34 +1,23 @@
 # Weather App
 
-A simple web application that displays the current weather for Colombo, Sri Lanka, with the ability to search for weather in other cities.
+A modern weather application that displays current weather conditions.
 
-## Features
+## Setup
 
-- Display current weather data for Colombo, Sri Lanka
-- Show temperature, humidity, wind speed, and UV index
-- Search for weather in other cities
-- Responsive design for different screen sizes
-- Loading indicators while fetching data
-- Weather condition icons
+1. Copy the example config file:
+   ```
+   cp config.example.js config.js
+   ```
 
-## Setup Instructions
+2. Edit `config.js` and add your API key.
 
-1. Clone this repository
-2. Sign up for a free API key at [WeatherAPI.com](https://www.weatherapi.com/)
-3. Create a `config.js` file based on `config.js.example` and add your API key
-4. Open `index.html` in your browser or deploy to a hosting service
+## AWS Amplify Deployment
 
-## Deployment
+When deploying with AWS Amplify:
 
-This application can be deployed to any static site hosting service like:
-- Vercel
-- Netlify
-- GitHub Pages
+1. Make sure to include your `config.js` file with your API key in the deployment.
+2. The `config.js` file should be excluded from version control but included in your deployment.
 
-## Technologies Used
+## Local Development
 
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
-- WeatherAPI.com for weather data
-- Font Awesome for icons
+For local development, use your local `config.js` file (which is ignored by git).

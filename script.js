@@ -1,5 +1,15 @@
 // Get API key from config
-const API_KEY = config.API_KEY;
+let API_KEY;
+try {
+    API_KEY = config.API_KEY;
+    if (!API_KEY || API_KEY === 'your-api-key-here') {
+        throw new Error('Invalid API key');
+    }
+    console.log('API key loaded successfully');
+} catch (error) {
+    console.error('Error loading API key:', error);
+    alert('Please set up your API key in config.js');
+}
 const DEFAULT_CITY = 'Colombo';
 
 // DOM elements
@@ -94,6 +104,10 @@ document.addEventListener('click', (e) => {
 // Function to search for cities
 async function searchCities(query) {
     try {
+        if (!API_KEY) {
+            throw new Error('API key is not set');
+        }
+        
         const response = await fetch(`https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${query}`);
         
         if (!response.ok) {
@@ -104,6 +118,7 @@ async function searchCities(query) {
         displayCitySuggestions(cities);
     } catch (error) {
         console.error('Error searching cities:', error);
+        autocompleteList.classList.add('hidden');
     }
 }
 
@@ -159,11 +174,17 @@ async function getWeatherData(city) {
     showLoading();
     
     try {
+        if (!API_KEY) {
+            throw new Error('API key is not set');
+        }
+        
         // Use current.json endpoint for basic weather data
         const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`);
         
         if (!response.ok) {
-            throw new Error('Weather data not available');
+            const errorData = await response.json();
+            console.error('API Error:', errorData);
+            throw new Error(errorData.error?.message || 'Weather data not available');
         }
         
         const data = await response.json();
