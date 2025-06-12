@@ -3,62 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App - Colombo</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Weather App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
             <input type="text" id="city-input" placeholder="Search for a city...">
-            <button id="search-btn"><i class="fas fa-search"></i></button>
+            <button id="search-btn">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            
+            <!-- Autocomplete dropdown -->
+            <div id="autocomplete-list" class="hidden"></div>
         </div>
         
         <div class="weather-container">
-            <div class="loading" id="loading">
+            <!-- Loading spinner -->
+            <div id="loading" class="hidden">
                 <div class="spinner"></div>
-                <p>Loading weather data...</p>
+                <p class="animate-pulse">Loading weather data...</p>
             </div>
             
-            <div class="weather-info" id="weather-info">
-                <h1 id="location">Colombo, Sri Lanka</h1>
-                <div class="weather-main">
-                    <img id="weather-icon" src="" alt="Weather Icon">
-                    <div class="temperature">
-                        <h2 id="temperature">--°C</h2>
-                        <p id="condition">--</p>
+            <!-- Weather information -->
+            <div id="weather-info" class="hidden">
+                <div class="main-weather-card">
+                    <h1 id="location" class="animate-fadeIn">Colombo, Sri Lanka</h1>
+                    
+                    <div class="main-card-content">
+                        <div class="left-content">
+                            <div class="weather-icon-temp">
+                                <img id="weather-icon" src="" alt="Weather Icon">
+                                <h2 id="temperature">--°C</h2>
+                            </div>
+                            <p id="condition">--</p>
+                        </div>
+                        
+                        <div class="right-content">
+                            <div class="time-info">
+                                <p id="local-time">--:--</p>
+                                <p id="last-updated">Updated just now</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="weather-details">
-                    <div class="detail">
-                        <i class="fas fa-tint"></i>
-                        <div>
-                            <p>Humidity</p>
-                            <p id="humidity">--%</p>
-                        </div>
-                    </div>
-                    <div class="detail">
-                        <i class="fas fa-wind"></i>
-                        <div>
-                            <p>Wind Speed</p>
-                            <p id="wind-speed">-- km/h</p>
-                        </div>
-                    </div>
-                    <div class="detail">
-                        <i class="fas fa-sun"></i>
-                        <div>
-                            <p>UV Index</p>
-                            <p id="uv-index">--</p>
-                        </div>
-                    </div>
-                </div>
+                <!-- Weather widgets will be dynamically inserted here -->
+                <div id="weather-widgets"></div>
             </div>
             
-            <div class="error" id="error">
+            <!-- Error message -->
+            <div id="error" class="hidden animate-fadeIn">
                 <p>Unable to fetch weather data. Please try again.</p>
             </div>
         </div>
+    </div>
+    
+    <!-- Hidden elements for additional weather data -->
+    <div style="display: none;">
+        <div id="precipitation"></div>
+        <div id="pressure"></div>
+        <div id="visibility"></div>
+        <div id="wind-dir"></div>
+        <div id="cloud"></div>
+        <div id="heat-index"></div>
+        <div id="wind-chill"></div>
+        <div id="dew-point"></div>
+        <div id="gust"></div>
+        <div id="air-quality"></div>
+        <div id="sunrise"></div>
+        <div id="sunset"></div>
+        <div id="forecast-container"></div>
+        <div id="humidity"></div>
+        <div id="wind-speed"></div>
+        <div id="uv-index"></div>
+        <div id="feels-like"></div>
     </div>
     
     <script src="config.js"></script>
