@@ -1,0 +1,5 @@
+// Configuration file for API keys
+const config = {
+    // Replace with your actual API key from weatherapi.com
+    API_KEY: 'YOUR_API_KEY'
+};

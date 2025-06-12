@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App - Colombo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="city-input" placeholder="Search for a city...">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="weather-container">
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Loading weather data...</p>
+            </div>
+            
+            <div class="weather-info" id="weather-info">
+                <h1 id="location">Colombo, Sri Lanka</h1>
+                <div class="weather-main">
+                    <img id="weather-icon" src="" alt="Weather Icon">
+                    <div class="temperature">
+                        <h2 id="temperature">--°C</h2>
+                        <p id="condition">--</p>
+                    </div>
+                </div>
+                
+                <div class="weather-details">
+                    <div class="detail">
+                        <i class="fas fa-tint"></i>
+                        <div>
+                            <p>Humidity</p>
+                            <p id="humidity">--%</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-wind"></i>
+                        <div>
+                            <p>Wind Speed</p>
+                            <p id="wind-speed">-- km/h</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-sun"></i>
+                        <div>
+                            <p>UV Index</p>
+                            <p id="uv-index">--</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="error" id="error">
+                <p>Unable to fetch weather data. Please try again.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
